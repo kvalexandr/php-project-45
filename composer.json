@@ -1,5 +1,6 @@
 {
     "name": "hexlet/code",
+    "description": "Brain games",
     "autoload": {
         "psr-4": {
             "Hexlet\\Code\\": "src/"
@@ -10,6 +11,12 @@
             "name": "Alexandr Kudryavtcev",
             "email": "k.v.alexandr@gmail.com"
         }
+    ],
+    "bin": [
+        "bin/brain-games"
+    ],
+    "license": [
+        "MIT"
     ],
     "require": {}
 }

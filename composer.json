@@ -6,7 +6,10 @@
             "Hexlet\\Codes2\\": "src/"
         },
         "files": [
-            "src/Cli.php"
+            "src/Cli.php",
+            "src/Engine.php",
+            "src/Games/brain-even.php",
+            "src/Games/brain-calc.php"
         ]
     },
     "authors": [
@@ -17,7 +20,8 @@
     ],
     "bin": [
         "bin/brain-games",
-        "bin/brain-even"
+        "bin/brain-even",
+        "bin/brain-calc"
     ],
     "license": [
         "MIT"

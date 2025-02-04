@@ -12,3 +12,6 @@
 
 ### Brain gcd
 [![asciicast](https://asciinema.org/a/701354.svg)](https://asciinema.org/a/701354)
+
+### Brain progression
+[![asciicast](https://asciinema.org/a/701534.svg)](https://asciinema.org/a/701534)

@@ -2,9 +2,6 @@
     "name": "hexlet/code",
     "description": "Brain games",
     "autoload": {
-        "psr-4": {
-            "Hexlet\\Codes2\\": "src/"
-        },
         "files": [
             "src/Cli.php",
             "src/Engine.php",

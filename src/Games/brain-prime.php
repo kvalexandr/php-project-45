@@ -2,7 +2,9 @@
 
 namespace BrainGames\Games\brain\prime;
 
-function isPrime($number)
+use function BrainGames\Engine\gameEngine;
+
+function isPrime(int $number): bool
 {
     if ($number === 1) {
         return false;
@@ -25,12 +27,10 @@ function getQuestionAndAnswer(): array
     return [$question, $answer];
 }
 
-function getData()
+function runGame(): void
 {
-    return [
-        'rules' => "Answer \"yes\" if given number is prime. Otherwise answer \"no\".",
-        'getQuestionAndAnswer' => function () {
-            return getQuestionAndAnswer();
-        }
-    ];
+    $rules = "Answer \"yes\" if given number is prime. Otherwise answer \"no\".";
+    $getDataGame = fn() => getQuestionAndAnswer();
+
+    gameEngine($rules, $getDataGame);
 }

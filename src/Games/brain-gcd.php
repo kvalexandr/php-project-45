@@ -2,6 +2,8 @@
 
 namespace BrainGames\Games\brain\gcd;
 
+use function BrainGames\Engine\gameEngine;
+
 function gcd(int $num1, int $num2): string
 {
     $maxNum = max($num1, $num2);
@@ -27,12 +29,10 @@ function getQuestionAndAnswer(): array
     return [$question, $answer];
 }
 
-function getData()
+function runGame(): void
 {
-    return [
-        'rules' => "Find the greatest common divisor of given numbers.",
-        'getQuestionAndAnswer' => function () {
-            return getQuestionAndAnswer();
-        }
-    ];
+    $rules = "Find the greatest common divisor of given numbers.";
+    $getDataGame = fn() => getQuestionAndAnswer();
+
+    gameEngine($rules, $getDataGame);
 }

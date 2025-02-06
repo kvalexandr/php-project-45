@@ -2,6 +2,8 @@
 
 namespace BrainGames\Games\brain\progression;
 
+use function BrainGames\Engine\gameEngine;
+
 function getQuestionAndAnswer(): array
 {
     $lenProgression = rand(5, 10);
@@ -24,12 +26,10 @@ function getQuestionAndAnswer(): array
     return [implode(' ', $question), (string)$answer];
 }
 
-function getData()
+function runGame(): void
 {
-    return [
-        'rules' => "What number is missing in the progression?",
-        'getQuestionAndAnswer' => function () {
-            return getQuestionAndAnswer();
-        }
-    ];
+    $rules = "What number is missing in the progression?";
+    $getDataGame = fn() => getQuestionAndAnswer();
+
+    gameEngine($rules, $getDataGame);
 }

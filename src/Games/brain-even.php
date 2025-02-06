@@ -2,6 +2,8 @@
 
 namespace BrainGames\Games\brain\even;
 
+use function BrainGames\Engine\gameEngine;
+
 function isEven($number): bool
 {
     return $number % 2 === 0;
@@ -14,12 +16,10 @@ function getQuestionAndAnswer(): array
     return [$question, $answer];
 }
 
-function getData()
+function runGame(): void
 {
-    return [
-        'rules' => "Answer \"yes\" if the number is even, otherwise answer \"no\".",
-        'getQuestionAndAnswer' => function () {
-            return getQuestionAndAnswer();
-        }
-    ];
+    $rules = "Answer \"yes\" if the number is even, otherwise answer \"no\".";
+    $getDataGame = fn() => getQuestionAndAnswer();
+
+    gameEngine($rules, $getDataGame);
 }

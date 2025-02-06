@@ -7,17 +7,15 @@ use function cli\prompt;
 
 const COUNT_ROUND = 3;
 
-function startGame($data): void
+function gameEngine(string $rules, callable $getDataGame): void
 {
-    ['rules' => $rules, 'getQuestionAndAnswer' => $getQuestionAndAnswer] = $data;
-
     line('Welcome to the Brain Games!');
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
     line($rules);
 
     for ($i = 0; $i < COUNT_ROUND; $i++) {
-        [$question, $answer] = $getQuestionAndAnswer();
+        [$question, $answer] = $getDataGame();
         line("Question: %s", $question);
         $answerUser = prompt('Your answer');
 

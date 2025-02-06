@@ -2,6 +2,8 @@
 
 namespace BrainGames\Games\brain\calc;
 
+use function BrainGames\Engine\gameEngine;
+
 function getQuestionAndAnswer(): array
 {
     $answer = '';
@@ -26,15 +28,13 @@ function getQuestionAndAnswer(): array
 
     $question = "{$number1} {$operator} {$number2}";
 
-    return [$question, (string) $answer];
+    return [$question, (string)$answer];
 }
 
-function getData()
+function runGame(): void
 {
-    return [
-        'rules' => "What is the result of the expression?",
-        'getQuestionAndAnswer' => function () {
-            return getQuestionAndAnswer();
-        }
-    ];
+    $rules = "What is the result of the expression?";
+    $getDataGame = fn() => getQuestionAndAnswer();
+
+    gameEngine($rules, $getDataGame);
 }

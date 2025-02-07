@@ -21,8 +21,8 @@ function getQuestionAndAnswer(): array
     $stepProgression = rand(2, 5);
 
     $progression = getProgression($lenProgression, $startProgression, $stepProgression);
-    $answer = $progression[$positionHide + 1];
-    $progression[$positionHide + 1] = '..';
+    $answer = $progression[$positionHide - 1];
+    $progression[$positionHide - 1] = '..';
     $question = $progression;
 
     return [implode(' ', $question), (string)$answer];

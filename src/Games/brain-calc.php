@@ -4,24 +4,25 @@ namespace BrainGames\Games\brain\calc;
 
 use function BrainGames\Engine\gameEngine;
 
+/**
+ * @throws \Exception
+ */
 function getQuestionAndAnswer(): array
 {
-    $answer = '';
-    $operator = '';
     $number1 = rand(1, 100);
     $number2 = rand(1, 100);
+    $operators = ['+', '-', '*'];
+    $operator = $operators[array_rand($operators)];
 
-    switch (rand(0, 2)) {
-        case 0:
-            $operator = '+';
+    switch ($operator) {
+        case '+':
+        default:
             $answer = $number1 + $number2;
             break;
-        case 1:
-            $operator = '-';
+        case '-':
             $answer = $number1 - $number2;
             break;
-        case 2:
-            $operator = '*';
+        case '*':
             $answer = $number1 * $number2;
             break;
     }
@@ -34,7 +35,7 @@ function getQuestionAndAnswer(): array
 function runGame(): void
 {
     $rules = "What is the result of the expression?";
-    $getDataGame = fn() => getQuestionAndAnswer();
+    $buildRoundData = fn() => getQuestionAndAnswer();
 
-    gameEngine($rules, $getDataGame);
+    gameEngine($rules, $buildRoundData);
 }

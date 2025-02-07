@@ -30,7 +30,7 @@ function getQuestionAndAnswer(): array
 function runGame(): void
 {
     $rules = "Answer \"yes\" if given number is prime. Otherwise answer \"no\".";
-    $getDataGame = fn() => getQuestionAndAnswer();
+    $buildRoundData = fn() => getQuestionAndAnswer();
 
-    gameEngine($rules, $getDataGame);
+    gameEngine($rules, $buildRoundData);
 }

@@ -4,6 +4,15 @@ namespace BrainGames\Games\brain\progression;
 
 use function BrainGames\Engine\gameEngine;
 
+function getProgression(int $len, int $start, int $step): array
+{
+    $progression = [];
+    for ($i = 0; $i < $len; $i++) {
+        $progression[] = $start + $step * $i;
+    }
+    return $progression;
+}
+
 function getQuestionAndAnswer(): array
 {
     $lenProgression = rand(5, 10);
@@ -11,17 +20,10 @@ function getQuestionAndAnswer(): array
     $startProgression = rand(5, 40);
     $stepProgression = rand(2, 5);
 
-    $question = [];
-    $answer = '';
-    for ($i = 0; $i < $lenProgression; $i++) {
-        $numberProgression = $startProgression + $stepProgression * $i;
-        if ($positionHide === $i + 1) {
-            $question[] = '..';
-            $answer = $numberProgression;
-        } else {
-            $question[] = $numberProgression;
-        }
-    }
+    $progression = getProgression($lenProgression, $startProgression, $stepProgression);
+    $answer = $progression[$positionHide + 1];
+    $progression[$positionHide + 1] = '..';
+    $question = $progression;
 
     return [implode(' ', $question), (string)$answer];
 }
@@ -29,7 +31,7 @@ function getQuestionAndAnswer(): array
 function runGame(): void
 {
     $rules = "What number is missing in the progression?";
-    $getDataGame = fn() => getQuestionAndAnswer();
+    $buildRoundData = fn() => getQuestionAndAnswer();
 
-    gameEngine($rules, $getDataGame);
+    gameEngine($rules, $buildRoundData);
 }

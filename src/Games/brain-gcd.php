@@ -32,7 +32,7 @@ function getQuestionAndAnswer(): array
 function runGame(): void
 {
     $rules = "Find the greatest common divisor of given numbers.";
-    $getDataGame = fn() => getQuestionAndAnswer();
+    $buildRoundData = fn() => getQuestionAndAnswer();
 
-    gameEngine($rules, $getDataGame);
+    gameEngine($rules, $buildRoundData);
 }

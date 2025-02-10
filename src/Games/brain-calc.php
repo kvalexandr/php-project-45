@@ -4,9 +4,16 @@ namespace BrainGames\Games\brain\calc;
 
 use function BrainGames\Engine\gameEngine;
 
-/**
- * @throws \Exception
- */
+function calc(int $number1, int $number2, string $operator): string
+{
+    return match ($operator) {
+        '+' => $number1 + $number2,
+        '-' => $number1 - $number2,
+        '*' => $number1 * $number2,
+        default => throw new \Exception("Unknown operator: {$operator}"),
+    };
+}
+
 function getQuestionAndAnswer(): array
 {
     $number1 = rand(1, 100);
@@ -14,22 +21,10 @@ function getQuestionAndAnswer(): array
     $operators = ['+', '-', '*'];
     $operator = $operators[array_rand($operators)];
 
-    switch ($operator) {
-        case '+':
-        default:
-            $answer = $number1 + $number2;
-            break;
-        case '-':
-            $answer = $number1 - $number2;
-            break;
-        case '*':
-            $answer = $number1 * $number2;
-            break;
-    }
-
+    $answer = calc($number1, $number2, $operator);
     $question = "{$number1} {$operator} {$number2}";
 
-    return [$question, (string)$answer];
+    return [$question, $answer];
 }
 
 function runGame(): void
